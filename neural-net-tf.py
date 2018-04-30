@@ -108,7 +108,7 @@ def main():
         num_epochs=1,
         shuffle=False)
     eval_results = classifier.evaluate(input_fn=eval_input_fn)
-    print(eval_results)
+    print(eval_results)   # 81.42%
 
 
 if __name__ == "__main__":
