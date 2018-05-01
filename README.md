@@ -69,8 +69,17 @@ The file structure is the following
 
 ## Confusion Matrices
 
-* Naive Baye
+* Naive Bayes
+
 ![](images/naive-bayes-cm.png)
+
+* SVM
+
+![](images/svm-cm.png)
+
+* Neural Network with TensorFlow
+
+![](images/neural-net-tf-cm.png)
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
