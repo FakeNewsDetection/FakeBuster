@@ -37,8 +37,8 @@ The file structure is the following
 ## Try It Out
 
 1. Clone the repo to your local machine-  
-`> git clone git://github.com/rockash/Fake-news-Detection`  
-`> cd Fake-news-Detection`
+`> git clone https://github.com/FakeNewsDetection/FakeBuster.git`  
+`> cd FakeBuster`
 
 2. Make sure you have all the dependencies installed-  
   * python 3.6+
@@ -54,6 +54,9 @@ The file structure is the following
     
 3. You're good to go now-  
 `> python svm.py`
+
+## Confusion Matrices of the Models 
+
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
