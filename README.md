@@ -53,7 +53,7 @@ The file structure is the following
         * `>>> nltk.download()`}
     
 3. You're good to go now-  
-`> python neuralNet.py`
+`> python svm.py`
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
