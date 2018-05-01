@@ -40,7 +40,7 @@ The file structure is the following
 ## Try It Out
 
 1. Clone the repo to your local machine-  
-`> git clone git://github.com/rockash/Fake-news-Detection`  
+`> git clone git://github.com/FakeNewsDetection/FakeBuster.git`  
 `> cd Fake-news-Detection`
 
 2. Make sure you have all the dependencies installed-  
