@@ -1,15 +1,22 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import numpy as np
 import tensorflow as tf
 from getEmbeddings import getEmbeddings
+import matplotlib.pyplot as plt
+import scikitplot.plotters as skplt
+import pickle
+import os.path
 
 IN_DIM = 300
 CLASS_NUM = 2
 LEARN_RATE = 0.0001
 TRAIN_STEP = 20000
-tensorflow_tmp = "tmp_tensorflow"
+tensorflow_tmp = "tmp_tensorflow/three_layer2"
+
+
+def plot_cmat(yte, ypred):
+    '''Plotting confusion matrix'''
+    skplt.plot_confusion_matrix(yte,ypred)
+    plt.show()
 
 
 def dummy_input_fn():
@@ -88,7 +95,7 @@ def main():
     tensors_to_log = {"probabilities": "softmax_tensor"}
     logging_hook = tf.train.LoggingTensorHook(
         tensors=tensors_to_log, every_n_iter=200)
-
+    
     # Train the model
     train_input_fn = tf.estimator.inputs.numpy_input_fn(
         x={"x": train_data},
@@ -100,7 +107,7 @@ def main():
         input_fn=train_input_fn,
         steps=TRAIN_STEP,
         hooks=[logging_hook])
-
+    
     # Evaluate the model and print results
     eval_input_fn = tf.estimator.inputs.numpy_input_fn(
         x={"x": eval_data},
@@ -109,6 +116,15 @@ def main():
         shuffle=False)
     eval_results = classifier.evaluate(input_fn=eval_input_fn)
     print(eval_results)   # 81.42%
+    
+    # Draw the confusion matrix
+    predict_input_fn = tf.estimator.inputs.numpy_input_fn(
+        x={"x": eval_data},
+        num_epochs=1,
+        shuffle=False)
+    predict_results = classifier.predict(input_fn=predict_input_fn)
+    predict_labels = [label["classes"] for label in predict_results]
+    plot_cmat(eval_labels, predict_labels)
 
 
 if __name__ == "__main__":
