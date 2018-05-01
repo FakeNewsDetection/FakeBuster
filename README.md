@@ -79,7 +79,7 @@ The file structure is the following
 
 * Neural Network with TensorFlow
 
-![](images/neural-net-tf-cm.png)
+![](images/neural-net-tf.png)
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
