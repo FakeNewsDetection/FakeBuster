@@ -30,33 +30,44 @@ The file structure is the following
 +-- datasets
 |   +-- train.csv
 |   +-- test.csv
-+-- tmp_tensorflow
++-- images
+|   +-- svm-cm.png
+|   +-- naive-bayes-cm.png
+|   +-- neural-net-tf.png
 +-- *.py
 ```
 
 ## Try It Out
 
 1. Clone the repo to your local machine-  
-`> git clone https://github.com/FakeNewsDetection/FakeBuster.git`  
-`> cd FakeBuster`
+`> git clone git://github.com/rockash/Fake-news-Detection`  
+`> cd Fake-news-Detection`
 
 2. Make sure you have all the dependencies installed-  
-  * python 3.6+
-  * numpy
-  * tensorflow
-  * gensim
-  * pandas
-  * nltk
-    * For nltk, we recommend typing `python.exe` in your command line which will take you to the Python interpretor  
-      * Then enter-
-        * `>>> import nltk`
-        * `>>> nltk.download()`}
+ * python 3.6+
+ * numpy
+ * tensorflow
+ * gensim
+ * pandas
+ * nltk
+   * For nltk, we recommend typing `python.exe` in your command line which will take you to the Python interpretor.  
+     * Then, enter-
+       * `>>> import nltk`
+       * `>>> nltk.download()`}
     
 3. You're good to go now-  
 `> python svm.py`
 
-## Confusion Matrices of the Models 
+## Comparing Accuracies of Models
 
+| Model                     | Accuracy     |
+|:-------------------------:|:------------:|
+| Naive Bayes               | 72.94%       |
+| SVM                       | 88.42%       |
+| Neural Network with TF    | 81.42%       |
+| Neural Network with Keras | 92.62%       |
+
+## Confusion Matrices
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
