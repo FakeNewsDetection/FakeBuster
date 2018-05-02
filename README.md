@@ -41,7 +41,7 @@ The file structure is the following
 
 1. Clone the repo to your local machine-  
 `> git clone git://github.com/FakeNewsDetection/FakeBuster.git`  
-`> cd Fake-news-Detection`
+`> cd FakeBuster`
 
 2. Make sure you have all the dependencies installed-  
  * python 3.6+
@@ -66,6 +66,7 @@ The file structure is the following
 | SVM                       | 88.42%       |
 | Neural Network with TF    | 81.42%       |
 | Neural Network with Keras | 92.62%       |
+| LSTM                      | 94.53%       |
 
 ## Confusion Matrices
 
@@ -80,6 +81,10 @@ The file structure is the following
 * Neural Network with TensorFlow
 
 ![](images/neural-net-tf.png)
+
+* Neural Network with Keras
+
+![](images/neural-net-keras.png)
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
