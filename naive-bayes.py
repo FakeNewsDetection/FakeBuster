@@ -10,11 +10,12 @@ def plot_cmat(yte, ypred):
     skplt.plot_confusion_matrix(yte,ypred)
     plt.show()
 
+
 xtr,xte,ytr,yte = getEmbeddings("datasets/train.csv")
-np.save('./xtr',xtr)
-np.save('./xte',xte)
-np.save('./ytr',ytr)
-np.save('./yte',yte)
+np.save('./xtr', xtr)
+np.save('./xte', xte)
+np.save('./ytr', ytr)
+np.save('./yte', yte)
 
 xtr = np.load('./xtr.npy')
 xte = np.load('./xte.npy')

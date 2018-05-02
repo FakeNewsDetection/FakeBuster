@@ -14,14 +14,15 @@ import scikitplot.plotters as skplt
 
 def plot_cmat(yte, ypred):
     '''Plotting confusion matrix'''
-    skplt.plot_confusion_matrix(yte,ypred)
+    skplt.plot_confusion_matrix(yte, ypred)
     plt.show()
 
+
 xtr,xte,ytr,yte = getEmbeddings("datasets/train.csv")
-np.save('./xtr',xtr)
-np.save('./xte',xte)
-np.save('./ytr',ytr)
-np.save('./yte',yte)
+np.save('./xtr', xtr)
+np.save('./xte', xte)
+np.save('./ytr', ytr)
+np.save('./yte', yte)
 
 xtr = np.load('./xtr.npy')
 xte = np.load('./xte.npy')
@@ -59,7 +60,9 @@ estimator = model.fit(x_train, encoded_y, epochs=20, batch_size=64)
 print("Model Trained!")
 score = model.evaluate(x_test, encoded_y_test)
 print("")
-print("Accuracy = " + format(score[1]*100, '.2f') + "%")   # 92.62%
+print("Accuracy = " + format(score[1]*100, '.2f') + "%")   # 92.69%
 
-preds = model.predict(x_test) 
-plot_cmat(yte, preds)
+probabs = model.predict_proba(x_test)
+y_pred = np.argmax(probabs, axis=1)
+ 
+plot_cmat(y_test, y_pred)
