@@ -6,13 +6,13 @@ from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 from collections import Counter
-from os import system
+import getEmbeddings2
 
 top_words = 5000
 epoch_num = 5
 batch_size = 64
 
-system("python getEmbeddings2.py")
+getEmbeddings2.clean_data()
 
 xtr = np.load('./xtr_shuffled.npy')
 xte = np.load('./xte_shuffled.npy')
