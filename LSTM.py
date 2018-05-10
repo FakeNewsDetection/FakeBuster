@@ -6,13 +6,27 @@ from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 from collections import Counter
+import os
 import getEmbeddings2
+import matplotlib.pyplot as plt
+import scikitplot.plotters as skplt
+
 
 top_words = 5000
 epoch_num = 5
 batch_size = 64
 
-getEmbeddings2.clean_data()
+def plot_cmat(yte, ypred):
+    '''Plotting confusion matrix'''
+    skplt.plot_confusion_matrix(yte, ypred)
+    plt.show()
+
+if not os.path.isfile('./xtr_shuffled.npy') or \
+    not os.path.isfile('./xte_shuffled.npy') or \
+    not os.path.isfile('./ytr_shuffled.npy') or \
+    not os.path.isfile('./yte_shuffled.npy'):
+    getEmbeddings2.clean_data()
+
 
 xtr = np.load('./xtr_shuffled.npy')
 xte = np.load('./xte_shuffled.npy')
@@ -71,6 +85,7 @@ for news in x_test:
         else:
             del news[i]
 
+
 # Truncate and pad input sequences
 max_review_length = 500
 X_train = sequence.pad_sequences(x_train, maxlen=max_review_length)
@@ -93,3 +108,7 @@ model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epoch_num, 
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Accuracy= %.2f%%" % (scores[1]*100))
+
+# Draw the confusion matrix
+y_pred = model.predict_classes(X_test)
+plot_cmat(y_test, y_pred)
