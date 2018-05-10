@@ -35,6 +35,7 @@ The file structure is the following
 |   +-- naive-bayes-cm.png
 |   +-- neural-net-tf.png
 |   +-- neural-net-keras.png
+|   +-- lstm-cm.png
 +-- *.py
 ```
 
@@ -86,6 +87,10 @@ The file structure is the following
 * Neural Network with Keras
 
 ![](images/neural-net-keras.png)
+
+* LSTM
+
+![](images/lstm-cm.png)
 
 ## References
   * [Fake news detection: A Data Mining perspective](https://arxiv.org/pdf/1708.01967.pdf)
