@@ -34,6 +34,7 @@ The file structure is the following
 |   +-- svm-cm.png
 |   +-- naive-bayes-cm.png
 |   +-- neural-net-tf.png
+|   +-- neural-net-keras.png
 +-- *.py
 ```
 
