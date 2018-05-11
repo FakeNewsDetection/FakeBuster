@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Fake news detection
+LSTM model
+"""
+
+
 import numpy as np
 from keras.datasets import imdb
 from keras.models import Sequential
@@ -7,13 +16,13 @@ from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 from collections import Counter
 import os
-import getEmbeddings2
+import getEmbeddings
 import matplotlib.pyplot as plt
 import scikitplot.plotters as skplt
 
 
 top_words = 5000
-epoch_num = 5
+epoch_num = 2
 batch_size = 64
 
 def plot_cmat(yte, ypred):
@@ -21,11 +30,12 @@ def plot_cmat(yte, ypred):
     skplt.plot_confusion_matrix(yte, ypred)
     plt.show()
 
+# Read the text data
 if not os.path.isfile('./xtr_shuffled.npy') or \
     not os.path.isfile('./xte_shuffled.npy') or \
     not os.path.isfile('./ytr_shuffled.npy') or \
     not os.path.isfile('./yte_shuffled.npy'):
-    getEmbeddings2.clean_data()
+    getEmbeddings.clean_data()
 
 
 xtr = np.load('./xtr_shuffled.npy')
@@ -84,7 +94,6 @@ for news in x_test:
             i += 1
         else:
             del news[i]
-
 
 # Truncate and pad input sequences
 max_review_length = 500

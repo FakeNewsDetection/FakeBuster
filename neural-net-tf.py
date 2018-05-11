@@ -1,16 +1,23 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Fake news detection
+The TensorFlow version of neural network
+"""
+
 import numpy as np
 import tensorflow as tf
 from getEmbeddings import getEmbeddings
 import matplotlib.pyplot as plt
 import scikitplot.plotters as skplt
-import pickle
 import os.path
 
 IN_DIM = 300
 CLASS_NUM = 2
 LEARN_RATE = 0.0001
 TRAIN_STEP = 20000
-tensorflow_tmp = "tmp_tensorflow/three_layer2"
+tensorflow_tmp = "tmp_tensorflow"
 
 
 def plot_cmat(yte, ypred):
@@ -81,8 +88,20 @@ def model_fn(features, labels, mode):
 
 def main():
     # Get the training and testing data from getEmbeddings
-    train_data, eval_data, train_labels, eval_labels = \
-        getEmbeddings("datasets/train.csv")
+    if not os.path.isfile('./xtr.npy') or \
+        not os.path.isfile('./xte.npy') or \
+        not os.path.isfile('./ytr.npy') or \
+        not os.path.isfile('./yte.npy'):
+        xtr,xte,ytr,yte = getEmbeddings("datasets/train.csv")
+        np.save('./xtr', xtr)
+        np.save('./xte', xte)
+        np.save('./ytr', ytr)
+        np.save('./yte', yte)
+    # Read the Doc2Vec data
+    train_data = np.load('./xtr.npy')
+    eval_data = np.load('./xte.npy')
+    train_labels = np.load('./ytr.npy')
+    eval_labels = np.load('./yte.npy')
     train_labels = train_labels.reshape((-1, 1)).astype(np.int32)
     eval_labels = eval_labels.reshape((-1, 1)).astype(np.int32)
 

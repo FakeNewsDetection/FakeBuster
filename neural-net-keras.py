@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Fake news detection
+The Keras version of neural network
+"""
+
+
 from getEmbeddings import getEmbeddings
 import matplotlib.pyplot as plt
 import numpy as np
@@ -10,6 +19,7 @@ from keras.optimizers import SGD
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import scikitplot.plotters as skplt
+import os
 
 
 def plot_cmat(yte, ypred):
@@ -17,12 +27,16 @@ def plot_cmat(yte, ypred):
     skplt.plot_confusion_matrix(yte, ypred)
     plt.show()
 
-
-xtr,xte,ytr,yte = getEmbeddings("datasets/train.csv")
-np.save('./xtr', xtr)
-np.save('./xte', xte)
-np.save('./ytr', ytr)
-np.save('./yte', yte)
+# Read the data
+if not os.path.isfile('./xtr.npy') or \
+    not os.path.isfile('./xte.npy') or \
+    not os.path.isfile('./ytr.npy') or \
+    not os.path.isfile('./yte.npy'):
+    xtr,xte,ytr,yte = getEmbeddings("datasets/train.csv")
+    np.save('./xtr', xtr)
+    np.save('./xte', xte)
+    np.save('./ytr', ytr)
+    np.save('./yte', yte)
 
 xtr = np.load('./xtr.npy')
 xte = np.load('./xte.npy')
@@ -47,7 +61,7 @@ def baseline_model():
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
     return model
 
-
+# Train the model
 model = baseline_model()
 model.summary()
 x_train, x_test, y_train, y_test = train_test_split(xtr, ytr, test_size=0.2, random_state=42)
@@ -65,4 +79,5 @@ print("Accuracy = " + format(score[1]*100, '.2f') + "%")   # 92.69%
 probabs = model.predict_proba(x_test)
 y_pred = np.argmax(probabs, axis=1)
  
+# Draw the confusion matrix
 plot_cmat(y_test, y_pred)
