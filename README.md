@@ -51,11 +51,15 @@ The file structure is the following
  * tensorflow
  * gensim
  * pandas
+ * keras
+ * matplotlib
+ * scikitplot
+ * sklearn
  * nltk
    * For nltk, we recommend typing `python.exe` in your command line which will take you to the Python interpretor.  
      * Then, enter-
        * `>>> import nltk`
-       * `>>> nltk.download()`}
+       * `>>> nltk.download()`
     
 3. You're good to go now-  
 `> python svm.py`

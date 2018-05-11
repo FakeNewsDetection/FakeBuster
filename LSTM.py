@@ -22,7 +22,7 @@ import scikitplot.plotters as skplt
 
 
 top_words = 5000
-epoch_num = 2
+epoch_num = 5
 batch_size = 64
 
 def plot_cmat(yte, ypred):
