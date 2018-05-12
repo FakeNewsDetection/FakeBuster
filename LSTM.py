@@ -6,7 +6,6 @@ Fake news detection
 LSTM model
 """
 
-
 import numpy as np
 from keras.datasets import imdb
 from keras.models import Sequential

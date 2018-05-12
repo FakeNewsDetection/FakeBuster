@@ -6,7 +6,6 @@ Fake news detection
 The Keras version of neural network
 """
 
-
 from getEmbeddings import getEmbeddings
 import matplotlib.pyplot as plt
 import numpy as np

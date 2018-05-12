@@ -6,7 +6,6 @@ Fake news detection
 The Doc2Vec pre-processing
 """
 
-
 import numpy as np
 import re
 import string

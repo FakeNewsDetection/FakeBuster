@@ -6,7 +6,6 @@ Fake news detection
 The naive bayes model
 """
 
-
 from getEmbeddings import getEmbeddings
 from sklearn.naive_bayes import GaussianNB
 import numpy as np

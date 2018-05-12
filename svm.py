@@ -6,7 +6,6 @@ Fake news detection
 The SVM model
 """
 
-
 from getEmbeddings import getEmbeddings
 import numpy as np
 from sklearn.svm import SVC
